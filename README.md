@@ -9,3 +9,4 @@ We plan to utilize CSV data of the monthly attendance by park, GEOJSON data for 
 <br><br>
 Some images for inspiration:
 <br><br>
+<img src="proposal_images/example_graph1.png/">
