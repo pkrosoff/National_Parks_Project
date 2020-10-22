@@ -10,3 +10,13 @@ We plan to utilize CSV data of the monthly attendance by park, GEOJSON data for 
 Some images for inspiration:
 <br><br>
 <img src="proposal_images/example_graph1.png/">
+<br>
+<img src="proposal_images/example_graph2.png/">
+<br>
+<img src="proposal_images/map_inspo.png/">
+<br>
+<img src="proposal_images/terra_proj.png/">
+<br>
+<br>
+<img src="proposal_images/proj2_map_idea.jpeg/">
+<br>
