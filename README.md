@@ -31,9 +31,9 @@ Some images for inspiration:
         <ol>
             <li>
             </li>
-            <li>1979 data to present(20 years at a time are available, select appropriate dropdowns) [from NPS.gov](https://irma.nps.gov/STATS/SSRSReports/National%20Reports/Annual%20Visitation%20By%20Park%20(1979%20-%20Last%20Calendar%20Year)</li>
-            <li>Park inception attendence to 1979 <href src="https://irma.nps.gov/STATS/SSRSReports/National%20Reports/Query%20Builder%20for%20Historic%20Annual%20Recreation%20Visits%20(1904%20-%201979)">from NPS.gov</li>
-            <li>Park inception date, image, and description information <href src="https://en.wikipedia.org/wiki/List_of_national_parks_of_the_United_States">from Wikipedia</li>
+            <li>1979 data to present(20 years at a time are available, select appropriate dropdowns) <a href="https://irma.nps.gov/STATS/SSRSReports/National%20Reports/Annual%20Visitation%20By%20Park%20(1979%20-%20Last%20Calendar%20Year)">[from NPS.gov</li>
+            <li>Park inception attendence to 1979 <a href="https://irma.nps.gov/STATS/SSRSReports/National%20Reports/Query%20Builder%20for%20Historic%20Annual%20Recreation%20Visits%20(1904%20-%201979)">from NPS.gov</li>
+            <li>Park inception date, image, and description information <a href="https://en.wikipedia.org/wiki/List_of_national_parks_of_the_United_States">from Wikipedia</li>
             <li>Note which parks are considered "NPRES" and remove those rows</li>
             <li>Reformat any dates that don't match</li>
             <li>Remove redundant columns</li>
