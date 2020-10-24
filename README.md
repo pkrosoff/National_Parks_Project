@@ -29,13 +29,11 @@ Some images for inspiration:
     <li>Visit NPS site to find data</li>
     <li>Download or copy data from origin sites into Excel files</li>
         <ol>
-            <li>
-            </li>
             <li>1979 data to present(20 years at a time are available, select appropriate dropdowns) <a href="https://irma.nps.gov/STATS/SSRSReports/National%20Reports/Annual%20Visitation%20By%20Park%20(1979%20-%20Last%20Calendar%20Year)">from NPS.gov</a></li>
             <li>Park inception attendence to 1979 <a href="https://irma.nps.gov/STATS/SSRSReports/National%20Reports/Query%20Builder%20for%20Historic%20Annual%20Recreation%20Visits%20(1904%20-%201979)">from NPS.gov</a></li>
             <li>Park inception date, image, and description information <a href="https://en.wikipedia.org/wiki/List_of_national_parks_of_the_United_States">from Wikipedia</a></li>
             <li>Note which parks are considered "NPRES" and remove those rows</li>
-            <li>Reformat any dates that don't match</li>
+            <li>Reformat any names and dates that don't match and fill park codes</li>
             <li>Remove redundant columns</li>
             <li></li>
             </ol>
@@ -45,3 +43,15 @@ Some images for inspiration:
     <li></li>
     <li></li>
 </ol>
+
+<br><br>
+
+Terras advice:
+for each national park in excel file
+make blank dictionalry with some keys as defined in the loop
+loop througha dn assign data to that "post"
+add number of visitors per year (if list, loop through)
+create a dictionary as you go, 
+two different collections for example,
+park collection and date collection
+
