@@ -35,7 +35,7 @@ Some images for inspiration:
             <li>Note which parks are considered "NPRES" and remove those rows</li>
             <li>Reformat any names and dates that don't match and fill park codes</li>
             <li>Remove redundant columns</li>
-            <li></li>
+            <li>Polygon </li>
             </ol>
     <li></li>
     <li></li>
