@@ -60,13 +60,3 @@ Some images for inspiration:
 <li>Visit your MongoDB Compass application on your local machine to ensure the database and collections have been populated</li>
 </ol>
 <br><br>
-
-Terras advice:
-for each national park in excel file
-make blank dictionalry with some keys as defined in the loop
-loop througha dn assign data to that "post"
-add number of visitors per year (if list, loop through)
-create a dictionary as you go, 
-two different collections for example,
-park collection and date collection
-
