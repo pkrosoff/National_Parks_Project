@@ -14,12 +14,16 @@ parks_data['area_km2'] = round(parks_data['area_acres']*0.00404686,2)
 parks_data['area_miles2'] = round(parks_data['area_acres']*0.0015625,2)
 parks_data = parks_data.drop(columns=['AREA_km2', 'area_KM2','AREA_acres'])
 # create list of years 1904-2019
+parks = []
+for i in parks_data["park_name"]:
+    parks.append(i)
 years = []
-for i in parks_data.loc[parks_data["park_name"]=="Acadia","1904":]:
+for i in parks_data.loc[parks_data["park_name"]=="Acadia","1904":"2019"]:
     years.append(i)
 # create empty dictionary to hold all final information
 np_data = {}
-# add list of all years as first item in final dict
+# add list of all parks and years as first item in final dict
+np_data["parks"]=(parks)
 np_data["years"]=(years)
 # working variable
 wip_dict = {}
