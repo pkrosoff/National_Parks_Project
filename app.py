@@ -23,7 +23,7 @@ def fred_dev():
     )
 
 @app.route("/jessie")
-def fred_dev():
+def jessie_dev():
     data = mongo.db.park_info.find_one()
     return render_template(
         "jessie.html",
@@ -31,7 +31,7 @@ def fred_dev():
     )
 
 @app.route("/johnny")
-def fred_dev():
+def johnny_dev():
     data = mongo.db.park_info.find_one()
     return render_template(
         "johnny.html",
@@ -39,7 +39,7 @@ def fred_dev():
     )
 
 @app.route("/phoebe")
-def fred_dev():
+def phoebe_dev():
     data = mongo.db.park_info.find_one()
     return render_template(
         "phoebe.html",
