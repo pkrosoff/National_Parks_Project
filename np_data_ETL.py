@@ -1,7 +1,8 @@
 # import dependencies
 import pandas as pd
+import pymongo
 # read data and rename column to be deleted later
-parks_data = pd.read_csv("np_data.csv")
+parks_data = pd.read_csv("../data/np_data.csv")
 parks_data.rename(columns={"area_km2":"AREA_km2"},inplace=True)
 # splitting, reformatting area types
 parks_data[['AREA_acres','area_KM2']] = parks_data.AREA_km2.str.split("(",expand=True)
@@ -26,8 +27,10 @@ wip_dict = {}
 for i in parks_data["park_name"]:
     wip = parks_data.loc[parks_data["park_name"]==i,:]
     wip_list = []
+    wip_list1 = []
     for j in years:
-        wip_list.append(wip[j].item())
+        wip_list.append(j)
+        wip_list1.append(wip[j].item())
     wip_dict = {
         "park_name":i,
         "park_code":parks_data.loc[parks_data["park_name"]==i,"park_code"].item(),
@@ -39,9 +42,16 @@ for i in parks_data["park_name"]:
         "area_miles2":parks_data.loc[parks_data["park_name"]==i,"area_miles2"].item(),
         "img_url":parks_data.loc[parks_data["park_name"]==i,"img_url"].item(),
         "description":parks_data.loc[parks_data["park_name"]==i,"description"].item(),
-        "visits":wip_list
+        "visits":{wip_list[i]: wip_list1[i] for i in range(len(wip_list))}
     }
     np_data[i]=(wip_dict)
 #np_data is now a dict of dicts holding all of the information
-
 #PUSH np_data dict of dicts to MongoDB
+conn = 'mongodb://localhost:27017'
+client = pymongo.MongoClient(conn)
+# define the database
+db = client.national_parks_db
+# define collections
+park_info = db.park_info
+park_info.drop()
+park_info.insert_one(np_data)
