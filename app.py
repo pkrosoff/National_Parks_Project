@@ -1,6 +1,5 @@
 from flask import Flask, render_template, redirect, url_for
 from flask_pymongo import PyMongo
-from flask_bootstrap import Bootstrap
 
 app=Flask(__name__)
 app.config["MONGO_URI"]="mongodb://localhost:27017/national_parks_db"
