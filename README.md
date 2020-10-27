@@ -42,21 +42,19 @@ Some images for inspiration:
     <li>Note which parks are considered "NPRES" and remove those rows (use Excel or pandas module in Jupyter Notebook)</li>
     <li>Reformat any names and dates that don't match and fill park codes</li>
     <li>Remove redundant columns</li>
-    <li>Import data from csv into jupyter notebook using pandas module</li>
-    <li>Split area columns, add miles squared by applying math functions to acres column</li>
-    <li>Convert data types from strings to integers or floats where necessary</li>
     <li>Combine and reformat yearly attendence data tables into one master table</li>
     <li>Export cleaned master csv into the data folder in your repository</li>
 </ol>
 <br>
 <h3>Load</h3>
 <br>
-<ol>
-<li>In a new notebook, pull in cleaned master data csv using pandas</li>
-<li>Establish a connection with you local MongoDB database software</li>
-<li>Name the database, and the collections it will have</li>
-<li>Create a post by iterrating through the rows in the dataframe and assinging the keys and values</li>
-<li>Insert each post into the collection</li>
-<li>Visit your MongoDB Compass application on your local machine to ensure the database and collections have been populated</li>
-</ol>
+    <li>Run the data_clean.ipynb file in jupyter notebook or from a bash terminal which will:</li>
+    <ul>
+    <li>Import data from csv into jupyter notebook</li>
+    <li>Split area columns, add miles squared by applying math functions to acres column</li>
+    <li>Convert data types from strings to integers or floats where necessary</li>
+    <li>Create a dicionary of park data by looping through data and assigning keys and values</li>
+    <li>Establish a connection with mongoDB</li>
+    <li>Clear data, and push data into mongoDB to create database collection</li>
+    </ul>
 <br><br>
