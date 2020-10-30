@@ -28,7 +28,7 @@ function createvisitsMap(parks) {
   
 function createMarkers(data) {
   // Grab park names and populate into an array
-  var park_names = data[0].parks;
+  var park_names = data[0].park;
   var park_list = [];
   // loop to populate
   park_names.forEach(name=>{
