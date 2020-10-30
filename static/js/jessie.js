@@ -46,17 +46,19 @@ function chartBuilder(np) {
       // Grab the park name data
       let park_name = data.park_name;
       // Filter data object and pull name, years, and visit numbers
-      let results = park_name.filter(sampleObj => sampleObj.id == park_name);
-      let result = results[0];
-      let years = []
-      years.forEach(year => {
-          var date = year
-          years.push(date)
+    //   let results = park_name.filter(sampleObj => sampleObj.id == park_name);
+    //   let result = results[0];
+      let year = data.visits[0]
+      let years_list = []
+      year.forEach(date => {
+          var time = date
+          years_list.push(time)
       });
-      let visits = []
-      visits.forEach(visit => {
+      let visit_num = data.visits[1]
+      let visits_list = []
+      visit_num.forEach(visit => {
         var human = visit
-        visits.push(human)
+        visits_list.push(human)
     });
 
       // Build a Line chart of park visits
