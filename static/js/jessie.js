@@ -68,9 +68,9 @@ function init() {
     });
   }
   
-  // Build a function to update plots on a sample ID change
+  // Build a function to update plots on a park name change
   function optionChanged(park_name) {
-    // Fetch new data each time a new sample is selected
+    // Fetch new data each time a new park name is selected
     chartBuilder(park_name);
 }
   // Set up the dashboard
