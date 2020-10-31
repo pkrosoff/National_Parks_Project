@@ -1,71 +1,25 @@
-d3.json('/parks_data').then(data=> {
-    console.log(data);
-    console.log(data[0]["Big Bend"]["state"]);
-})
-
-// function pullParks(park) {
-//     // Pull in data from parks_data app page
-//     d3.json("parks_data").then((data) => {
-//     // Grab park names and populate into an array
-//     var park_names = data[0].park_name;
-//     var park_list = [];
-//     // loop to populate
-//     park_names.forEach(name=>{
-//       var parkname = name
-//       park_list.push(parkname)
-//     })
-
-// });
-
-// function pullVisits(data) {
-//     // Grab park names and populate into an array
-//     var year = data.visits[0];
-//     var year_list = [];
-//     var visits = data.visits[1];
-//     var visitnum = [];
-//     // loop to populate years
-//     year.forEach(date => {
-//       var datenum = date
-//       year_list.push(datenum)
-//     });
-//     // loop to populate visits
-//     visits.forEach(number => {
-//         var people = number
-//         visitnum.push(people)
-//       })
-
-// }};
-
-//   // main function with data call to parks_data app page
-// d3.json("parks_data").then(data => pullParks(data));
-
 // Build a function for the charts
-function chartBuilder(np) {
+function chartBuilder(park_name) {
     // Pull in data from samples.json  
     d3.json('/parks_data').then((data) => {
-      // Grab the park name data
-      let park_name = data.park_name;
-      // Filter data object and pull name, years, and visit numbers
-    //   let results = park_name.filter(sampleObj => sampleObj.id == park_name);
-    //   let result = results[0];
-      let year = data.visits[0]
-      let years_list = []
-      year.forEach(date => {
-          var time = date
-          years_list.push(time)
+        // var park_name = d3.select("#selDataset").node().value;
+        // console.log(park_name);
+      var visits_list = [];
+      var specific_year = [];
+      var years_list = data[0].years
+      years_list.forEach(year => {
+        if ((data[0][park_name]['visits'][year]) > 0) {
+            visits_list.push(data[0][park_name]['visits'][year]);
+            specific_year.push(year)
+        }
       });
-      let visit_num = data.visits[1]
-      let visits_list = []
-      visit_num.forEach(visit => {
-        var human = visit
-        visits_list.push(human)
-    });
-
+      console.log(years_list)
+      console.log(visits_list)
       // Build a Line chart of park visits
       let lineData = [
       {
-        y: visits,
-        x: years,
+        y: visits_list,
+        x: specific_year,
         text: park_name,
         marker: {
           colorscale: 'Portland'},
@@ -75,7 +29,7 @@ function chartBuilder(np) {
     ];
       // Line graph layout
       let lineLayout = {
-        title: "Park Visitaions",
+        title: `${park_name} Annual Visitations`,
         margin: { t: 30, l: 150 },
   
     };
@@ -84,13 +38,26 @@ function chartBuilder(np) {
     });
 }
 
+// Dropdown Change handler
+function dropDown() {
+    // Select the input value from the form
+    var park = d3.select("#selDataset").node().value;
+    console.log(park);
+    // clear the input value
+    d3.select("#selDataset").node().value = "";
+    // Build the plot with the new park
+    chartBuilder(park);
+  }
+  d3.select("#selDataset").on("change", dropDown);
+
+
 // Build a fucntion (initial function) to populate page with default park and populate drop down selection
 function init() {
     // Grab a reference to the dropdown select element
     var selector = d3.select("#selDataset");
     // Use the list of sample names to populate the select options
     d3.json('/parks_data').then((data) => {
-      var parkNames = data.park_name;
+      var parkNames = data[0].parks;
       parkNames.forEach((park_name) => {
         selector
           .append("option")
@@ -100,16 +67,13 @@ function init() {
       // Use the first sample from the list to build the initial plots
       var firstPark = parkNames[0];
       chartBuilder(firstPark);
-      PullSampledata(firstPark);
     });
   }
   
   // Build a function to update plots on a sample ID change
-  function optionChanged(newPark) {
+  function optionChanged(park_name) {
     // Fetch new data each time a new sample is selected
-    chartBuilder(newPark);
-    PullSampledata(newPark);
-  }
-  
+    chartBuilder(park_name);
+}
   // Set up the dashboard
   init();
