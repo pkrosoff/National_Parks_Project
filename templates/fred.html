@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <!--Fred's Development Page-->
+
 <head>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/heatmap.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="static/css/fred.css"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -11,7 +18,18 @@
 </head>
 
 <body>
+    <figure class="highcharts-figure">
+        <div id="container"></div>
+        <p class="highcharts-description">
+            Heatmap showing employee data per weekday. Heatmaps are commonly used to
+            visualize hot spots within data sets, and to show patterns or correlations.
+            Due to their compact nature, they are often used with large sets of data.
+        </p>
+    </figure>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="static/js/fred.js"></script>
 
 </body>
 
+<!-- <script src="static/css/style.css"></script> -->
 </html>
