@@ -49,7 +49,7 @@ function createMarkers(data) {
     var selection = data[0][park];
     // set size variable for park
     //WIP WIP WIP
-    var wipyear = "2009";
+    var wipyear = 2019;
     //WIP WIP WIP
     var marksize = Math.sqrt(selection["visits"][wipyear])*100;
     // generate marker data & popup text
@@ -65,9 +65,14 @@ function createMarkers(data) {
       "<h5> Founded: " + selection["date_established"] + "</h5>" +
       "<h5> Visits in "+wipyear+": "+selection["visits"][wipyear]+"</h5>"+
       "<strong>" + selection["description"] + "</strong>");
+    if (selection["year_established"] <= wipyear){
       parkmarkers.push(parkMarker);
+    }
     var parkCircle = L.circle([selection["lat"],selection["lon"]],{radius:marksize})
+    if(selection["year_established"]<=wipyear){
+      parkmarkers.push(parkMarker);
       parkcircles.push(parkCircle);
+    }
   });
   // create map with markers
   createvisitsMap(L.layerGroup(parkmarkers),L.layerGroup(parkcircles));
