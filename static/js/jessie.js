@@ -43,8 +43,6 @@ function dropDown() {
     // Select the input value from the form
     var park = d3.select("#selDataset").node().value;
     console.log(park);
-    // clear the input value
-    d3.select("#selDataset").node().value = "";
     // Build the plot with the new park
     chartBuilder(park);
   }
