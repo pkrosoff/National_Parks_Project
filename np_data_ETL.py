@@ -3,7 +3,7 @@ import pandas as pd
 import pymongo
 # YEARLY DATA -----------------------------------------------------
 # read data and rename column to be deleted later
-parks_data = pd.read_csv("./data/np_data.csv")
+parks_data = pd.read_csv("data/np_data.csv")
 parks_data.rename(columns={"area_km2":"AREA_km2"},inplace=True)
 # splitting, reformatting area types
 parks_data[['AREA_acres','area_KM2']] = parks_data.AREA_km2.str.split("(",expand=True)
