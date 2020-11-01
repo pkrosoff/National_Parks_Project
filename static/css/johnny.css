@@ -1,10 +1,15 @@
-body {
-    padding: 0;
-    margin: 0;
-  }
-  
-  #map,
-  body,
-  html {
-    height: 100%;
-  }
+/* These parameters are required for the map to work */
+html,
+body,
+#np_timelineMap {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+/* Leaflet timeline */
+.leaflet-left {
+  width: 25%;
+  font-size: x-large;
+  font-weight: bolder;
+}

@@ -1,74 +1,73 @@
-// Store our API endpoint inside queryUrl
-var queryUrl = "https://gist.githubusercontent.com/erincaughey/2f221501645757e28b715c4063e87595/raw/a90be1b434b1a8cdf71c2abc3373ca63987e2d23/nps-geo-boundary.json";
+// GET TO WERK
 
 const API_KEY = "pk.eyJ1IjoicGtyb3NvZmYiLCJhIjoiY2tnZHcydm5lMDhhajJ5cGF0bWZ5djVuNCJ9.HE5-gKOKsb4LWwjYY5kOMA"
-
-// // Perform a GET request to the query URL
-// d3.json(queryUrl).then(data => {
-//   console.log(data);
-//   // Once we get a response, send the data.features object to the createFeatures function
-//   createFeatures(data.features);
-// });
-
+// console.log("Hello World")
 var myMap = L.map("map", {
-    center: [39.8283, 98.5795],
-    zoom: 3
+    center: [37.0902, -95.7129],
+    zoom: 4
   });
-  L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
-    attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
-    tileSize: 512,
-    maxZoom: 18,
-    zoomOffset: -1,
-    id: "mapbox/streets-v11",
-    accessToken: API_KEY
-  }).addTo(myMap);
+
+L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
+attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
+tileSize: 512,
+maxZoom: 18,
+zoomOffset: -1,
+id: "mapbox/outdoors-v11",
+accessToken: API_KEY
+}).addTo(myMap);
 
 
 
+d3.json("/park_boundaries").then(data => {
+// console.log(data)
+var national_parks_layer = []
+for (var i = 0; i < 510; i++) {
+  if (data.features[i].properties.UNIT_TYPE == "National Park") {
+    // console.log(data.features[0].properties.UNIT_TYPE)}
 
-// function createFeatures(polygonData) {
+    
+    national_parks_layer.push(data.features[i]);
+  }}
+// console.log(national_parks_layer)}}
+L.geoJson(national_parks_layer).addTo(myMap);
 
-//   // Define a function we want to run once for each feature in the features array
-//   // Give each feature a popup describing the place and time of the earthquake
-//   function onEachFeature(feature, layer) {
-//     layer.bindPopup("<h3>" + feature.properties.UNIT_NAME +
-//       "</h3><hr><p>" + new Date(feature.properties.UNIT_TYPE) + "</p>");
-//   }
+markerplaces = []
+for (var i = 0; i < 58; i++) {
+  
+  var parks = national_parks_layer[i];
+  // console.log(parks.geometry.type)}
+  if (parks.geometry.type == "Polygon") {
+    markerplaces.push([parks.geometry.coordinates[0][0][1],parks.geometry.coordinates[0][0][0]])}
+    else if (parks.geometry.type == "Multipolygon")
+    {
+      markerplaces.push([parks.geometry.coordinates[0][0][0][1],parks.geometry.coordinates[0][0][0][0]])}
+      else {
+        markerplaces.push([parks.geometry.coordinates[0][0][0][1],parks.geometry.coordinates[0][0][0][0]])
+      }}
+// console.log(markerplaces)}
 
-//   // Create a GeoJSON layer containing the features array on the data object
-//   // Run the onEachFeature function once for each piece of data in the array
+// Icon options
+var iconOptions = {
+  iconUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Star_icon_stylized.svg',
+  iconSize: [20, 20]
+}
 
-//   var polygons = L.geoJSON(polygonData, {
-//     onEachFeature: onEachFeature,
-//   });
-//   createMap(polygons);
-// }
+// Creating a custom icon
+var customIcon = L.icon(iconOptions);
+// Options for the marker
+var markerOptions = {
+  icon: customIcon
+}
+for (var i = 0; i < 58; i++) {
+L.marker(markerplaces[i], markerOptions)
+.bindPopup("<h3>" + national_parks_layer[i].properties.UNIT_NAME + " <br>National Park" + "</h3> <hr> <h4>" + markerplaces[i] + "</h4>")
+        .on('mouseover', function (e) {
+            this.openPopup();
+        })
+        .on('mouseout', function (e) {
+            this.closePopup();
+        })
+.addTo(myMap)};
+});
 
-// function createMap(polygons) {
-
-  // Define myMap
-
-//   var myMap = L.map("map", {
-//     center: [45.52, -122.67],
-//     zoom: 9
-//   });
-
-//   Add initial map layer
-
-//   L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
-//     attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
-//     tileSize: 512,
-//     maxZoom: 18,
-//     zoomOffset: -1,
-//     id: "mapbox/streets-v11",
-//     accessToken: API_KEY
-//   }).addTo(myMap);
-// }
-
-
-
-  // Create overlay object to hold our overlay layer
-//   var overlayMaps = {
-//     Parks: polygons,
-//   };
 

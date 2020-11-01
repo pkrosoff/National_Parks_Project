@@ -34,27 +34,38 @@ Some images for inspiration:
             <li>Park inception attendence to 1979 <a href="https://irma.nps.gov/STATS/SSRSReports/National%20Reports/Query%20Builder%20for%20Historic%20Annual%20Recreation%20Visits%20(1904%20-%201979)">from NPS.gov</a></li>
             <li>Park inception date, image, and description information <a href="https://en.wikipedia.org/wiki/List_of_national_parks_of_the_United_States">from Wikipedia</a></li>
             <li>Save the original csvs into a data folder inside your project repository</li>
+            <li>Monthly Attendence Data <a href="https://irma.nps.gov/STATS/SSRSReports/Park%20Specific%20Reports/Visitation%20by%20Month?Park=MORA">From NPS.gov</a></li>
             </ul></ol>
         <br>
 <h3>Transform</h3>
 <br>
 <ol>
-    <li>Note which parks are considered "NPRES" and remove those rows (use Excel or pandas module in Jupyter Notebook)</li>
-    <li>Reformat any names and dates that don't match and fill park codes</li>
-    <li>Remove redundant columns</li>
-    <li>Combine and reformat yearly attendence data tables into one master table</li>
-    <li>Export cleaned master csv into the data folder in your repository</li>
+    <li>Inception, Attendent, and General Info Data:</li>
+        <ul>
+            <li>Note which parks are considered "NPRES" and remove those rows (use Excel or pandas module in Jupyter Notebook)</li>
+            <li>Reformat any names and dates that don't match and fill park codes</li>
+            <li>Remove redundant columns</li>
+            <li>Combine and reformat yearly attendence data tables into one master table</li>
+            <li>Export cleaned master csv into the data folder in your repository</li>
+        </ul>
+    <li>Monthly Attendence Data:
+    <ul>
+            <li>Gather last four years of data for each park</li>
+            <li>Find the average of the monthly numbers to get a four year running average</li>
+            <li>Create new csv using Excel with data averages</li>
+            <li>Export csv to data folder in repository</li>
+        </ul>
 </ol>
 <br>
 <h3>Load</h3>
 <br>
-    <li>Run the data_clean.ipynb file in jupyter notebook or from a bash terminal which will:</li>
+    <li>Run the np_data_ETL.py file in you terminal, which will:</li>
     <ul>
-    <li>Import data from csv into jupyter notebook</li>
+    <li>Import cleaned data from csv files</li>
     <li>Split area columns, add miles squared by applying math functions to acres column</li>
     <li>Convert data types from strings to integers or floats where necessary</li>
     <li>Create a dicionary of park data by looping through data and assigning keys and values</li>
     <li>Establish a connection with mongoDB</li>
-    <li>Clear data, and push data into mongoDB to create database collection</li>
+    <li>Clear any old databases, and push data into mongoDB to create fresh database collections</li>
     </ul>
 <br><br>

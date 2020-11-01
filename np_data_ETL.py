@@ -44,6 +44,7 @@ for i in parks_data["park_name"]:
         "lon":parks_data.loc[parks_data["park_name"]==i,"lon"].item(),
         "state":parks_data.loc[parks_data["park_name"]==i,"state"].item(),
         "date_established":parks_data.loc[parks_data["park_name"]==i,"date_established"].item(),
+        "year_established":parks_data.loc[parks_data["park_name"]==i,"year_established"].item(),
         "area_acres":parks_data.loc[parks_data["park_name"]==i,"area_acres"].item(),
         "area_km2":parks_data.loc[parks_data["park_name"]==i,"area_km2"].item(),
         "area_miles2":parks_data.loc[parks_data["park_name"]==i,"area_miles2"].item(),
