@@ -60,7 +60,13 @@ var markerOptions = {
 }
 for (var i = 0; i < 58; i++) {
 L.marker(markerplaces[i], markerOptions)
-.bindPopup("<h1>" + national_parks_layer[i].properties.UNIT_NAME + "</h1> <hr> <h3>Location " + markerplaces[i] + "</h3>")
+.bindPopup("<h3>" + national_parks_layer[i].properties.UNIT_NAME + " <br>National Park" + "</h3> <hr> <h4>" + markerplaces[i] + "</h4>")
+        .on('mouseover', function (e) {
+            this.openPopup();
+        })
+        .on('mouseout', function (e) {
+            this.closePopup();
+        })
 .addTo(myMap)};
 });
 
