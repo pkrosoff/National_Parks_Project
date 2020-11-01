@@ -5,28 +5,60 @@ function createvisitsMap(data) {
         "type":"FeatureCollection",
         "features":[]
     }
+    let circleCollection = {
+        "type":"FeatureCollection",
+        "features":[]
+    }
     var year_list = data[0].years;
     var park_list = data[0].parks;
     year_list.forEach(year=>{
         park_list.forEach(park=>{
-            // for(let[key,value] of Object.entries(data[0].parks[park]["year_established"])){
-                if(data[0][park]["year_established"] <= year){
-                    let post = {
-                        "type":"Feature",
-                        "properties":{
-                            "park":data[0][park]["park_name"],
-                            "start":(year+"-01-01"),
-                            "end":"2020-01-01",
-                            "visits":data[0][park]["visits"][year]
-                        },
-                        "geometry":{
-                            "type":"Point",
-                            "coordinates":[data[0][park]["lon"],data[0][park]["lat"]]
-                        }
+            var endYear = String(parseInt(year) + 1);
+            if(data[0][park]["year_established"] == year ||
+             data[0][park]["year_established"]==String(parseInt(1904-32)) ||
+             data[0][park]["year_established"]==String(parseInt(1904-14)) ||
+             data[0][park]["year_established"]==String(parseInt(1904-5)) ||
+             data[0][park]["year_established"]==String(parseInt(1904-2)) ||
+             data[0][park]["year_established"]==String(parseInt(1904-1))){
+                let post = {
+                    "type":"Feature",
+                    "properties":{
+                        "park_name":data[0][park]["park_name"],
+                        "region":data[0][park]["region"],
+                        "state":data[0][park]["state"],
+                        "start":year,
+                        "end":"2020",
+                        "date_established":data[0][park]["date_established"],
+                        "visits":data[0][park]["visits"][year],
+                        "description":data[0][park]["description"]
+                    },
+                    "geometry":{
+                        "type":"Point",
+                        "coordinates":[data[0][park]["lon"],data[0][park]["lat"]]
                     }
-                    featureCollection.features.push(post);
                 }
-            // }
+                featureCollection.features.push(post);
+            }
+            if(data[0][park]["year_established"]<=year){
+                let circlePost = {
+                    "type":"Feature",
+                    "properties":{
+                        "park_name":data[0][park]["park_name"],
+                        "region":data[0][park]["region"],
+                        "state":data[0][park]["state"],
+                        "date_established":data[0][park]["date_established"],
+                        "start":year,
+                        "end":endYear,
+                        "visits":data[0][park]["visits"][year],
+                        "description":data[0][park]["description"]
+                    },
+                    "geometry":{
+                        "type":"Point",
+                        "coordinates":[data[0][park]["lon"],data[0][park]["lat"]]
+                    }
+                }
+                circleCollection.features.push(circlePost);
+            }
         })
     })
     // create base layer
@@ -54,9 +86,58 @@ function createvisitsMap(data) {
     });
     map.addControl(slider);
 
-    var polygonTimeline = L.timeline(featureCollection);
+    var customMarker = L.icon({
+        iconUrl:'../static/images/tree_marker.png',
+        iconSize:[33,33]
+      });
+    // var polygonTimeline = L.timeline(featureCollection,{
+    //     iconUrl:"../static/images/tree_marker.png"
+    // });
+
+    // var polygonTimeline = L.timeline(featureCollection,{
+    //     pointToLayer:function(feature,latlng){
+    //         let tooltip = `<h1>${feature.properties.park_name}</h1>
+    //         <h3>Region: ${feature.properties.region} | State: ${feature.properties.state}</h3>
+    //         <h4>Founded: ${feature.properties.date_established}</h4>
+    //         <h4>Visits in ${feature.properties.start}: ${feature.properties.visits}</h4>
+    //         <strong>${feature.properties.description}</strong>`;
+    //         return L.marker(latlng,{
+    //             icon:customMarker
+    //         }).bindTooltip(tooltip,{'maxWidth':'50'}).openTooltip();
+    //     },
+    // });
+
+    var polygonTimeline = L.timeline(circleCollection,{
+        pointToLayer:function(feature,latlng){
+            var visitsFormat = feature.properties.visits.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+            let markerPopup = ("<h1>" + feature.properties.park_name + "</h1>" +
+            "<h3> Region: " + feature.properties.region + "| State: " + feature.properties.state + "</h3>" +
+            "<h4> Founded: " + feature.properties.date_established + "</h4>" +
+            "<h4> Visits in "+feature.properties.start+": "+visitsFormat+"</h4>"+
+            "<strong>" + feature.properties.description + "</strong>")
+            return L.marker(latlng,{
+                icon:customMarker
+            }).bindPopup(markerPopup);
+        },
+    });
+    
+    var circlesTimeline = L.timeline(circleCollection,{
+        pointToLayer:function(feature,latlng){
+            let circlePopup = ("<h1>"+feature.properties.park_name+"</h1>"+
+            "<h3>Visits in "+feature.properties.start+": "+feature.properties.visits+"</h3>")
+            var circRad = Math.sqrt(feature.properties.visits)*.0420;
+            return L.circleMarker(latlng,{
+                radius:circRad,
+                color:"black",
+                fillColor:"darkorange",
+                fillOpacity:0.15
+            });
+        },
+    });
     polygonTimeline.addTo(map);
-    slider.addTimelines(polygonTimeline);
+    circlesTimeline.addTo(map);
+    slider.addTo(map);
+    slider.addTimelines(polygonTimeline,circlesTimeline);
 }
 
 
