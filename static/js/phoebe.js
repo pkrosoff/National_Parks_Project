@@ -30,4 +30,38 @@ for (var i = 0; i < 510; i++) {
   }}
 // console.log(national_parks_layer)}}
 L.geoJson(national_parks_layer).addTo(myMap);
-})
+
+markerplaces = []
+for (var i = 0; i < 58; i++) {
+  
+  var parks = national_parks_layer[i];
+  // console.log(parks.geometry.type)}
+  if (parks.geometry.type == "Polygon") {
+    markerplaces.push([parks.geometry.coordinates[0][0][1],parks.geometry.coordinates[0][0][0]])}
+    else if (parks.geometry.type == "Multipolygon")
+    {
+      markerplaces.push([parks.geometry.coordinates[0][0][0][1],parks.geometry.coordinates[0][0][0][0]])}
+      else {
+        markerplaces.push([parks.geometry.coordinates[0][0][0][1],parks.geometry.coordinates[0][0][0][0]])
+      }}
+// console.log(markerplaces)}
+
+// Icon options
+var iconOptions = {
+  iconUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Star_icon_stylized.svg',
+  iconSize: [20, 20]
+}
+
+// Creating a custom icon
+var customIcon = L.icon(iconOptions);
+// Options for the marker
+var markerOptions = {
+  icon: customIcon
+}
+for (var i = 0; i < 58; i++) {
+L.marker(markerplaces[i], markerOptions)
+.bindPopup("<h1>" + national_parks_layer[i].properties.UNIT_NAME + "</h1> <hr> <h3>Location " + markerplaces[i] + "</h3>")
+.addTo(myMap)};
+});
+
+
