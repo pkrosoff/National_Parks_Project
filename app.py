@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, jsonify, json
 from flask_pymongo import PyMongo
-from flask_bootstrap import Bootstrap
+# from flask_bootstrap import Bootstrap
 import requests
 
 app=Flask(__name__)
