@@ -15,10 +15,6 @@ function createvisitsMap(parkmarkers,parkcircles) {
     "Parks": parkmarkers,
     "Total Year Visits": parkcircles
   };
-  // park circles layer
-  // var overlayMaps = {
-  //   "Total Year Visits": parkcircles
-  // };
   // create map
   var map = L.map("map", {
     center: [38, -95],
@@ -43,7 +39,10 @@ function createMarkers(data) {
   // Grab park coords and populate array for markers and circles
   var parkmarkers = [];
   var parkcircles = [];
-  // Loop through the parks array
+  // create empty array for years of visits data
+  var year_list = data[0].years;
+  console.log(year_list); 
+  // loop through the parks array
   park_list.forEach(park => {
     // select current park to slim code
     var selection = data[0][park];
@@ -60,7 +59,7 @@ function createMarkers(data) {
     var parkMarker = L.marker([selection["lat"],selection["lon"]],{
       icon:customMarker
     })
-      .bindPopup("<h3>" + data[0][park]["park_name"] + "</h3>" +
+      .bindPopup("<h3>" + selection["park_name"] + "</h3>" +
       "<h4> Region: " + selection["region"] + "| State: " + selection["state"] + "</h4>" +
       "<h5> Founded: " + selection["date_established"] + "</h5>" +
       "<h5> Visits in "+wipyear+": "+selection["visits"][wipyear]+"</h5>"+
@@ -79,4 +78,6 @@ function createMarkers(data) {
 }
 
 // main function with data call to parks_data app page
-d3.json("parks_data").then(data => createMarkers(data));
+d3.json("parks_data").then(data => 
+  createMarkers(data)
+);
