@@ -1,6 +1,9 @@
 # National_Parks_Project
 This is the repository for the group "The Impenetrable Puddings", and will have the contents of our Bootcamp Project 2
-<br><br>
+<br>
+<h4>Group Members:</h4>
+<h4>Fred, Jessie, Johnny, and Phoebe</h4>
+<br>
 <strong>Project Proposal:</strong>
 <br><br>
 Analysis of National Park Attendance over time
@@ -91,6 +94,15 @@ Multiple endpoints were created, one for each of the datasets used:
 <p>Our final visualization on the homepage is a nifty tool that helps you plan your park visit when it is convenient for you, adding the ability to see when most poeple are or aren't also visiting. What's your preference? It allows the user to see an average attendence for each park for each month using attendence data for the last four years. It is interactive upon mouse-over with opacity changes and popups with data. You can check out the code <a href ="static/js/np_heatmap.js">here</a>.
 <br><br>
 <h2>HTML/CSS</h2>
-In the templates folder of the repository, you will find the index.html file which connects knits the javascript files together from the static/js folder into a cohesive arrangement. Each javascript file has a unique script, and wach visualization has a unique ID which is referenced by the index.html code and connect all the files. The css is accessed from its place in the static folder by the index.html, and adds style to the borders and text on the homepage. The index.html page also uses jinja to create a loop to populate some images relating to the naitonal parks to spice up the hoempage and draw the users interest.
+In the templates folder of the repository, you will find the index.html file which connects knits the javascript files together from the static/js folder into a cohesive arrangement. Each javascript file has a unique script, and each visualization has a unique ID that is referenced by the index.html code and connect all the files. The css is accessed from its place in the static folder by the index.html, and adds style to the borders and text on the homepage. The index.html page also uses jinja to create a loop to populate some images relating to the naitonal parks to spice up the hoempage and draw the users interest.
 Any programs and packages that were referenced and used in the visualization have to be referenced in the index.html for the visualizations to work.
 <img src="static/images/readme_pics/html.png/" width="500" height="auto">
+<br>
+<h3>Want to make this site work for you??</h3>
+<ol>
+<li>Run the requirements.txt file in an environment in your terminal to download the necessary packages</li>
+<li>Run the np_data_ETL.py file in your terminal</li>
+<li>Run the app.py file in your terminal</li>
+<li>Command+Click on the local route produced by the app.py file</li>
+<li>Get inspired to visit a National Park!</li></ol>
+<br>
