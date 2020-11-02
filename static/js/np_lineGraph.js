@@ -2,8 +2,8 @@
 function chartBuilder(park_name) {
     // Pull in data from samples.json  
     d3.json('/parks_data').then((data) => {
-        // var park_name = d3.select("#selDataset").node().value;
-        // console.log(park_name);
+    
+      // Create lists for line graph axis data
       var visits_list = [];
       var specific_year = [];
       var years_list = data[0].years
@@ -13,9 +13,11 @@ function chartBuilder(park_name) {
             specific_year.push(year)
         }
       });
+      // check that lists are populating correctly
       console.log(years_list)
       console.log(visits_list)
-      // Build a Line chart of park visits
+
+      // Build a line chart of park visits
       let lineData = [
       {
         y: visits_list,
@@ -27,13 +29,13 @@ function chartBuilder(park_name) {
         orientation: "h"
       }
     ];
-      // Line graph layout
+      // Line chart layout
       let lineLayout = {
         title: `${park_name} Annual Visitations`,
         margin: { t: 30, l: 150 },
   
     };
-      // call plotly to make the bar chart
+      // call plotly to make the line chart
       Plotly.newPlot("line", lineData, lineLayout);
     });
 }
@@ -43,7 +45,7 @@ function dropDown() {
     // Select the input value from the form
     var park = d3.select("#selDataset").node().value;
     console.log(park);
-    // Build the plot with the new park
+    // Build the plot with the new park data
     chartBuilder(park);
   }
   d3.select("#selDataset").on("change", dropDown);
@@ -53,7 +55,7 @@ function dropDown() {
 function init() {
     // Grab a reference to the dropdown select element
     var selector = d3.select("#selDataset");
-    // Use the list of sample names to populate the select options
+    // Use the list of park names to populate the select options
     d3.json('/parks_data').then((data) => {
       var parkNames = data[0].parks;
       parkNames.forEach((park_name) => {
@@ -62,7 +64,7 @@ function init() {
           .text(park_name)
           .property("value", park_name);
       });
-      // Use the first sample from the list to build the initial plots
+      // Use the first park name from the list to build the initial plots
       var firstPark = parkNames[0];
       chartBuilder(firstPark);
     });
