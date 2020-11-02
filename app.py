@@ -30,8 +30,10 @@ def jessie_dev():
 
 @app.route("/johnny")
 def johnny_dev():
+    data = mongo.db.park_info.find_one()
     return render_template(
         "johnny.html",
+        data=data,
     )
 
 @app.route("/phoebe")
