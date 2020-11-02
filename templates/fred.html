@@ -8,27 +8,25 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <script src="static/css/fred.css"></script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Fred Dev</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}"/>
+    <!-- <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}"/> -->
 </head>
 
 <body>
     <figure class="highcharts-figure">
         <div id="container"></div>
         <p class="highcharts-description">
-            Heatmap showing employee data per weekday. Heatmaps are commonly used to
-            visualize hot spots within data sets, and to show patterns or correlations.
-            Due to their compact nature, they are often used with large sets of data.
+            This Heatmaps shows the average per monthly visits for each park.
         </p>
     </figure>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="static/js/fred.js"></script>
-
+    <script src="static/css/fred.css"></script>
 </body>
 
 <!-- <script src="static/css/style.css"></script> -->
