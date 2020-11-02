@@ -72,4 +72,4 @@ Multiple endpoints were created, one for each of the datasets used:
 <li>Averaged Monthly Park Attendence Data (MongoDB)</li>
 <li>GeoJson Park Perimeter Coordinate Data (URL Query)</li>
 </ul>
-<img src="static/images/readme_pics/app_py.png/" width="200" height="auto">
+<img src="static/images/readme_pics/app_py.png/" width="400" height="auto">
