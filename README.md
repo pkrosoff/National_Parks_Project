@@ -93,4 +93,4 @@ Multiple endpoints were created, one for each of the datasets used:
 <h2>HTML/CSS</h2>
 In the templates folder of the repository, you will find the index.html file which connects knits the javascript files together from the static/js folder into a cohesive arrangement. Each javascript file has a unique script, and wach visualization has a unique ID which is referenced by the index.html code and connect all the files. The css is accessed from its place in the static folder by the index.html, and adds style to the borders and text on the homepage. The index.html page also uses jinja to create a loop to populate some images relating to the naitonal parks to spice up the hoempage and draw the users interest.
 Any programs and packages that were referenced and used in the visualization have to be referenced in the index.html for the visualizations to work.
-<img src="static/images/readme_pics/html.png/" width="200" height="auto">
+<img src="static/images/readme_pics/html.png/" width="500" height="auto">
