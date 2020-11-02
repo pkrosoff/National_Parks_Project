@@ -18,7 +18,7 @@ accessToken: API_KEY
 
 d3.json("/parks_data").then(parks_data => {
 console.log(parks_data[0]);
-var parknames = parks_data[0].parks
+// var parknames = parks_data[0].parks
 
 
 
@@ -57,15 +57,15 @@ for (var i = 0; i < 58; i++) {
       
       // for (var parknames = parks_data.parks; parknames < parks_data.parks.length; parknames++)
   
-  if (data.features[i].properties.UNIT_NAME == parknames[i]) {
-    parknames[i] = parknames[i];
-    console.log(parkames[i]);
+  // if (data.features[i].properties.UNIT_NAME == parknames[i]) {
+  //   parknames[i] = parknames[i];
+  //   console.log(parkames[i]);
     // park_areas.push(parks_data[0][parknames[i]].area_miles2);
     // park_est.push(parks_data[0][parknames[i]].date_established);
     // park_poster.push(parks_data[0][parknames[i]].img_url);
     // console.log(park_est);
     // console.log("nope");
-  }
+  // }
 // console.log(markerplaces)}
 
 // Icon options
@@ -81,8 +81,10 @@ var markerOptions = {
   icon: customIcon
 }
 for (var i = 0; i < 58; i++) {
+var name = national_parks_layer[i].properties.UNIT_NAME
+console.log(parks_data[0][name])
 L.marker(markerplaces[i], markerOptions)
-.bindPopup("<h3>" + national_parks_layer[i].properties.UNIT_NAME + " <br>National Park" + "</h3> <hr> <h4>" + markerplaces[i] + "</h4>")
+.bindPopup("<h3>" + name + " <br>National Park" + "</h3> <hr> <h4>" + markerplaces[i] + "</h4>")
         .on('mouseover', function (e) {
             this.openPopup();
         })

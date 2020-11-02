@@ -1,0 +1,27 @@
+brotlipy==0.7.0
+certifi==2020.6.20
+cffi @ file:///opt/concourse/worker/volumes/live/e2eb91c2-780d-4f74-545d-c2827857ffe3/volume/cffi_1600699193708/work
+chardet==3.0.4
+click==7.1.2
+cryptography @ file:///opt/concourse/worker/volumes/live/c92b6573-5445-4a21-4a76-9af93cc67a5e/volume/cryptography_1601046836410/work
+Flask==1.1.2
+Flask-PyMongo==2.3.0
+idna @ file:///tmp/build/80754af9/idna_1593446292537/work
+itsdangerous==1.1.0
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+mkl-fft==1.2.0
+mkl-random==1.1.1
+mkl-service==2.3.0
+numpy @ file:///opt/concourse/worker/volumes/live/e6a5a904-ea21-4841-4eec-d53e1ac1014c/volume/numpy_and_numpy_base_1603479626870/work
+pandas @ file:///opt/concourse/worker/volumes/live/4a78f420-de57-4d97-543f-8ecd5647e338/volume/pandas_1602088155642/work
+pycparser @ file:///tmp/build/80754af9/pycparser_1594388511720/work
+pymongo==3.11.0
+pyOpenSSL @ file:///tmp/build/80754af9/pyopenssl_1594392929924/work
+PySocks==1.7.1
+python-dateutil==2.8.1
+pytz==2020.1
+requests @ file:///tmp/build/80754af9/requests_1592841827918/work
+six==1.15.0
+urllib3 @ file:///tmp/build/80754af9/urllib3_1603305693037/work
+Werkzeug==1.0.1
