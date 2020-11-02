@@ -11,8 +11,10 @@ Some images for inspiration:
 <br><br>
 <img src="proposal_images/example_graph1.png/" width="200" height="auto"> <img src="proposal_images/example_graph2.png/" width="200" height="auto"> <img src="proposal_images/map_inspo.png/" width="200" height="auto"> <img src="proposal_images/terra_proj.png/" width="200" height="auto"> <img src="proposal_images/proj2_map_idea.jpeg/" width="200" height="auto">
 <br>
-
-
+<hr>
+<br>
+<h1>How to Create This Website</h1>
+<br>
 <h2>ETL</h2>
 <br><br>
 <h3>Extract</h3>
@@ -60,3 +62,14 @@ Some images for inspiration:
     <li>Clear any old databases, and push data into mongoDB to create fresh database collections</li>
     </ul>
 <br><br>
+<h2>Create a Flask powered API</h2>
+<br>
+Using Anaconda's Flask module, we created an app.py file which leads users to endpoints of our API and allows the data to be accessed in JSON format from the MongoDB databases and query URLs.
+<br>
+Multiple endpoints were created, one for each of the datasets used:
+<ul>
+<li>General Park Info and Yearly Attendence Data (MongoDB)</li>
+<li>Averaged Monthly Park Attendence Data (MongoDB)</li>
+<li>GeoJson Park Perimeter Coordinate Data (URL Query)</li>
+</ul>
+<img src="static/images/readme_pics/app_py.png/" width="200" height="auto">

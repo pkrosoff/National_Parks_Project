@@ -1,7 +1,7 @@
 // GET TO WERK
 
 const API_KEY = "pk.eyJ1IjoicGtyb3NvZmYiLCJhIjoiY2tnZHcydm5lMDhhajJ5cGF0bWZ5djVuNCJ9.HE5-gKOKsb4LWwjYY5kOMA"
-// console.log("Hello World")
+console.log("Hello World")
 var myMap = L.map("map", {
     center: [37.0902, -95.7129],
     zoom: 4
@@ -15,6 +15,11 @@ zoomOffset: -1,
 id: "mapbox/outdoors-v11",
 accessToken: API_KEY
 }).addTo(myMap);
+
+d3.json("/parks_data").then(parks_data => {
+console.log(parks_data[0]);
+var parknames = parks_data[0].parks
+
 
 
 
@@ -32,18 +37,35 @@ for (var i = 0; i < 510; i++) {
 L.geoJson(national_parks_layer).addTo(myMap);
 
 markerplaces = []
+dopemarkers = []
 for (var i = 0; i < 58; i++) {
   
-  var parks = national_parks_layer[i];
+  var parkies = national_parks_layer[i];
+  // var park_areas = []
+  // var park_est = []
+  // var park_poster = []
   // console.log(parks.geometry.type)}
-  if (parks.geometry.type == "Polygon") {
-    markerplaces.push([parks.geometry.coordinates[0][0][1],parks.geometry.coordinates[0][0][0]])}
-    else if (parks.geometry.type == "Multipolygon")
+  if (parkies.geometry.type == "Polygon") {
+    markerplaces.push([parkies.geometry.coordinates[0][0][1],parkies.geometry.coordinates[0][0][0]])}
+    else if (parkies.geometry.type == "Multipolygon")
     {
-      markerplaces.push([parks.geometry.coordinates[0][0][0][1],parks.geometry.coordinates[0][0][0][0]])}
+      markerplaces.push([parkies.geometry.coordinates[0][0][0][1],parkies.geometry.coordinates[0][0][0][0]])}
       else {
-        markerplaces.push([parks.geometry.coordinates[0][0][0][1],parks.geometry.coordinates[0][0][0][0]])
+        markerplaces.push([parkies.geometry.coordinates[0][0][0][1],parkies.geometry.coordinates[0][0][0][0]])
       }}
+      
+      
+      // for (var parknames = parks_data.parks; parknames < parks_data.parks.length; parknames++)
+  
+  if (data.features[i].properties.UNIT_NAME == parknames[i]) {
+    parknames[i] = parknames[i];
+    console.log(parkames[i]);
+    // park_areas.push(parks_data[0][parknames[i]].area_miles2);
+    // park_est.push(parks_data[0][parknames[i]].date_established);
+    // park_poster.push(parks_data[0][parknames[i]].img_url);
+    // console.log(park_est);
+    // console.log("nope");
+  }
 // console.log(markerplaces)}
 
 // Icon options
@@ -70,4 +92,4 @@ L.marker(markerplaces[i], markerOptions)
 .addTo(myMap)};
 });
 
-
+})
