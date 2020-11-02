@@ -24,8 +24,10 @@ def fred_dev():
 
 @app.route("/jessie")
 def jessie_dev():
+    data = mongo.db.park_info.find_one()
     return render_template(
         "jessie.html",
+        data=data
     )
 
 @app.route("/johnny")
