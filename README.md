@@ -1,8 +1,8 @@
 # National_Parks_Project
-This is the repository for the group "The Impenetrable Puddings", and will have the contents of our Bootcamp Project 2
+This is a repository containing Project 2 of the University of Oregon/Trilogy Data Visualization Bootcamp 2020
 <br>
-<h4>Group Members:</h4>
-<h4>Fred, Jessie, Johnny, and Phoebe</h4>
+<h4>Group Name: The Inpenetrable Puddings</h4>
+<h4>Group Members: Fred, Jessie, Johnny, and Phoebe</h4>
 <br>
 <strong>Project Proposal:</strong>
 <br><br>
