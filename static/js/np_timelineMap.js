@@ -44,7 +44,7 @@ function createvisitsMap(data) {
       accessToken: API_KEY
     });
     // create map centered on continental US
-    var map = L.map("np_timelineMap", {
+    var map = L.map("timelineMap", {
       center: [38, -95],
       zoom: 5,
       layers: [lightmap]

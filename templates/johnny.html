@@ -1,28 +1,167 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Johnny's Dev Page</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>National Parks</title>
+    <!-- API Key -->
+    <script type="text/javascript" src="../static/js/config.js"></script>
+    <!-- Style Sheets -->
+    <link rel="stylesheet" href="../static/css/johnny.css">
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     />
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
-    <script src="./static/js/leaflet.timeline.js"></script>
-    <link rel="stylesheet" href="../static/css/johnny.css">
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script type="text/javascript" src="../static/js/config.js"></script>
-    
-
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
-  <body>
 
-    <div id="np_timelineMap"></div>
+
+  <body>
+    <!-- Intro -->
+    <div class="row" id="titlerow" style="margin:none;">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <img src="https://di-uploads-pod4.dealerinspire.com/fiatoftacoma/uploads/2018/12/Depositphotos_33075035_xl-2015.jpg" style="width:75%;margin-top:10px">
+        <h1 id="title">National Parks of the USA</h1>
+        <hr id="breaker">
+        <p id="bodypara">
+          Beginning with the founding of Yellowstone National Park in 1872,
+          the National Parks system and subsequent National Park Service
+          (founded 1916) now encompasses 62 national parks with millions of
+          visitors each year. Below, you will find visualizations that explore
+          the current parks system in great detail, explore the history of their growth,
+          and help you plan a visit to a National Park!
+        </p>
+      </div>
+    </div>
+    <!--==============-->
+    <div class="row" id="posterrow">
+    <!-- VISUALIZATION-->
+    {% for i in data.parks %}
+    <!-- Removing parks without posters -->
+    <!-- Not the most elegant solution, but it works -->
+    {% if i != "Congaree" and
+     i != "Gates of the Arctic" and
+     i != "Hot Springs" and
+     i != "Isle Royale" and
+     i != "Katmai" and
+     i != "Kenai Fjords" and
+     i != "Kobuk Valley" and
+     i != "Lake Clark" and
+     i != "Lassen Volcanic" and
+     i != "Mount Rainier" and
+     i != "Voyageurs" and
+     i != "White Sands" and
+     i != "Wrangell–St Elias" %}
+      <div class="col-md-1" id="postercol">
+        <img src="{{data[i]['img_url']}}" id="poster">
+      </div>
+      {% endif %}
+      {% endfor %}
+      </div>
+    <!--==============-->
+
+
+    <!-- Phoebe -->
+    <div class="row" id="titlerow">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <h1 id="title">Title Here</h1>
+        <hr id="breaker">
+        <p id="bodypara">
+          Text stuffs here
+        </p>
+      </div>
+    </div>
+    <!--==============-->
+    <!-- VISUALIZATION-->
+    <div id="map"></div>
+    <!--==============-->
+
+    <hr id="breaker">
+
+    <!-- Jessie -->
+    <div class="row" id="titlerow">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <h1 id="title">Title Here</h1>
+        <hr id="breaker">
+        <p id="bodypara">
+          Text stuffs here
+        </p>
+      </div>
+    </div>
+    <!--==============-->
+    <!-- VISUALIZATION-->
+    <select id="selDataset" onchange="optionChanged(this.value)"></select>
+    <div id= "line" ></div>
+    <!--==============-->
+
+    <hr id="breaker">
+
+    <!-- Johnny -->
+    <div class="row" id="titlerow">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <h1 id="title">Title Here</h1>
+        <hr id="breaker">
+        <p id="bodypara">
+          Text stuffs here
+        </p>
+      </div>
+    </div>
+    <!--==============-->
+    <!-- VISUALIZATION-->
+    <div id="timelineMap"></div>
+    <!--==============-->
+
+    <hr id="breaker">
+
+    <!-- Fred -->
+    <div class="row" id="titlerow">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <h1 id="title">Title Here</h1>
+        <hr id="breaker">
+        <p id="bodypara">
+          Text stuffs here
+        </p>
+      </div>
+    </div>
+    <!--==============-->
+    <!-- VISUALIZATION-->
+    <figure class="highcharts-figure">
+      <div id="container"></div>
+      <p class="highcharts-description">
+          Heatmap showing employee data per weekday. Heatmaps are commonly used to
+          visualize hot spots within data sets, and to show patterns or correlations.
+          Due to their compact nature, they are often used with large sets of data.
+      </p>
+  </figure>
+    <!--==============-->
+    
+  <br>
+  <hr id="breaker">
+  <h3><center><bold>Created by: Fred, Jessie, Johnny, & Phoebe</bold></center></h3>
+
+
+    <!-- Web Dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/heatmap.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <!-- Local JS -->
+    <script src="./static/js/np_parkboundariesMap.js"></script>
+    <script src="./static/js/np_lineGraph.js"></script>
     <script src="../static/js/np_timelineMap.js"></script>
+    <script src="./static/js/leaflet.timeline.js"></script>
+    <script src="./static/js/np_heatMap.js"></script>
+
   </body>
 </html>
 
