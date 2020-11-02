@@ -1,20 +1,186 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>National Parks</title>
+    <!-- API Key -->
+    <script type="text/javascript" src="../static/js/config.js"></script>
+    <!-- Style Sheets -->
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}"/>
-</head>
+  </head>
 
-<body>
-    <p style="margin-left: 50px;">
-    </p>
-    <p style="margin-left: 50px;">
-    </p>
-</body>
 
+  <body>
+    <!-- Intro -->
+    <div class="row" id="titlerow" style="margin:none;">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <img src="https://di-uploads-pod4.dealerinspire.com/fiatoftacoma/uploads/2018/12/Depositphotos_33075035_xl-2015.jpg" style="width:75%;margin-top:10px">
+        <h1 id="title">National Parks of the USA</h1>
+        <hr id="breaker">
+        <p id="bodypara">
+          Beginning with the founding of Yellowstone National Park in 1872,
+          the National Parks system and subsequent National Park Service
+          (founded 1916) now encompasses 62 national parks with millions of
+          visitors each year. Below, you will find visualizations that explore
+          the current parks system in great detail, explore the history of their growth,
+          and help you plan a visit to a National Park!
+        </p>
+      </div>
+    </div>
+    <!--==============-->
+    <div class="row" id="posterrow">
+    <!-- VISUALIZATION-->
+    {% for i in data.parks %}
+    <!-- Removing parks without posters -->
+    <!-- Not the most elegant solution, but it works -->
+    {% if i != "Congaree" and
+     i != "Gates of the Arctic" and
+     i != "Hot Springs" and
+     i != "Isle Royale" and
+     i != "Katmai" and
+     i != "Kenai Fjords" and
+     i != "Kobuk Valley" and
+     i != "Lake Clark" and
+     i != "Lassen Volcanic" and
+     i != "Mount Rainier" and
+     i != "Voyageurs" and
+     i != "White Sands" and
+     i != "Wrangell–St Elias" %}
+      <div class="col-md-1" id="postercol">
+        <img src="{{data[i]['img_url']}}" id="poster">
+      </div>
+      {% endif %}
+      {% endfor %}
+      </div>
+    <!--==============-->
+
+
+    <!-- Phoebe -->
+    <div class="row" id="titlerow">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <h1 id="title">Title Here</h1>
+        <hr id="breaker">
+        <p id="bodypara">
+          Text stuffs here
+        </p>
+      </div>
+    </div>
+    <!--==============-->
+    <!-- VISUALIZATION-->
+    <div id="map"></div>
+    <!--==============-->
+
+    <hr id="breaker">
+
+    <!-- Jessie -->
+    <div class="row" id="titlerow">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <h1 id="title">Park Visits through the Years</h1>
+        <hr id="breaker">
+        <p id="bodypara">
+          Each National Park has its own unique splendor and geography,
+          as well as its own unique boundaries and size. Some parks are
+          easy stops off the highway, others are colossal areas that
+          require veritable odysseys just to find a trailhead which can
+          have a significant effect on how many people are inclined to visit.
+          <br>Of course, each park is also subject to the wiles of nature and
+          natural events or disasters can render even the largest parks
+          unsafe for visitation for a time.<br>
+          Use the interactive graph below to pick a park and see its unique
+          history of visits through the years.
+        </p>
+      </div>
+    </div>
+    <!--==============-->
+    <!-- VISUALIZATION-->
+    <select id="selDataset" onchange="optionChanged(this.value)"></select>
+    <div id= "line" ></div>
+    <!--==============-->
+
+    <hr id="breaker">
+
+    <!-- Johnny -->
+    <div class="row" id="titlerow">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <h1 id="title">Growth of the National Parks System</h1>
+        <hr id="breaker">
+        <p id="bodypara">
+          Beginning in 1903, when there were only six national parks 
+          (Yellowstone, Yosemite, Sequoia, Mt. Rainier, Crater Lake, Wind Cave),
+          the map below travels over 116 years through 2019 showing the growth
+          of the National Parks system. Each year, if a new park is established,
+          a marker will appear in its location and for every park, circles will
+          display and change size depending on the number of visits the park had
+          in that year. Press play and check it out for yourself! 
+        </p>
+      </div>
+    </div>
+    <!--==============-->
+    <!-- VISUALIZATION-->
+    <div id="timelineMap"></div>
+    <!--==============-->
+
+    <hr id="breaker">
+
+    <!-- Fred -->
+    <div class="row" id="titlerow">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <h1 id="title">Plan Your Visit to a National Park</h1>
+        <hr id="breaker">
+        <p id="bodypara">
+          Hopefully after exploring some of the wonders and history of
+          our nation's National parks you can't wait to visit one! To visualize
+          the visitations of the parks on a more focused level and help you pick a
+          time to visit yourself, checkout the heatmap below. It includes a list of
+          of National Parks and their average number of visits over the past
+          four years for each month.<br>Bully for you!
+        </p>
+      </div>
+    </div>
+    <!--==============-->
+    <!-- VISUALIZATION-->
+    <figure class="highcharts-figure">
+      <div id="container"></div>
+      <p class="highcharts-description">
+          Heatmap showing employee data per weekday. Heatmaps are commonly used to
+          visualize hot spots within data sets, and to show patterns or correlations.
+          Due to their compact nature, they are often used with large sets of data.
+      </p>
+  </figure>
+    <!--==============-->
+    
+  <br>
+  <hr id="breaker">
+  <h3><center><bold>Created by: Fred, Jessie, Johnny, & Phoebe</bold></center></h3>
+
+
+    <!-- Web Dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/heatmap.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <!-- Local JS -->
+    <script src="./static/js/np_parkboundariesMap.js"></script>
+    <script src="./static/js/np_lineGraph.js"></script>
+    <script src="../static/js/np_timelineMap.js"></script>
+    <script src="./static/js/leaflet.timeline.js"></script>
+    <script src="./static/js/np_heatMap.js"></script>
+
+  </body>
 </html>

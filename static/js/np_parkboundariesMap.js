@@ -1,6 +1,4 @@
 // GET TO WERK
-const config = require('config.js');
-console.log("Hello World")
 var myMap = L.map("map", {
     center: [37.0902, -95.7129],
     zoom: 4
