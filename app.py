@@ -12,8 +12,10 @@ queryURL = "https://gist.githubusercontent.com/erincaughey/2f221501645757e28b715
 
 @app.route("/")
 def index():
+    data = mongo.db.park_info.find_one()
     return render_template(
         "index.html",
+        data = data,
     )
 
 @app.route("/fred")
