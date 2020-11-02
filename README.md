@@ -85,8 +85,8 @@ Multiple endpoints were created, one for each of the datasets used:
 <br>
 <p>Each team member tackled a visualization which tells a story about the National Parks. Using JavaScript, data was accessed from our API and transformed into interactive graphs, charts, and maps.
 <br>
-<p>The first visualization on the homepage after the park posters is an interactive leaflet map with park boundaries, adorable star shaped markers, and mouseover popups with park info inside. Get a full picture of where the parks are, and how much space they cover. Don't be shy, zoom in! You can explore the code for the map <a href ="static/js/np_parkboundariesMap.js">here</a>.
-    <img src="static/images/readme_pics/markermap.png/" width="300" height="auto">
+<p>The first visualization on the homepage after the park posters is an interactive leaflet map with park boundaries, adorable star shaped markers, and mouseover popups with park info inside. Get a full picture of where the parks are, and how much space they cover. Don't be shy, zoom in! You can explore the code for the map <a href ="static/js/np_parkboundariesMap.js">here</a>.<br>
+    <img src="static/images/readme_pics/markermap.png/" width="500" height="auto">
 <br>
 <p>The second visualization is a line graph depicting the history of each park's visitor attendence in a given year from inception to the year 2019. This graph features a dropdown menu that allows you to explore the history of each park in detail, as well as a mouseover feature on the line ittself which specifies the year and visitors for any time you'd like to learn about. Feast your eyes on the graph code <a href ="static/js/np_lineGraph.js">here</a>.
     <br>
