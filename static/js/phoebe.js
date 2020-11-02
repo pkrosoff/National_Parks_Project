@@ -82,9 +82,9 @@ var markerOptions = {
 }
 for (var i = 0; i < 58; i++) {
 var name = national_parks_layer[i].properties.UNIT_NAME
-console.log(parks_data[0][name])
+console.log(parks_data[0][name].date_established)
 L.marker(markerplaces[i], markerOptions)
-.bindPopup("<h3>" + name + " <br>National Park" + "</h3> <hr> <h4>" + markerplaces[i] + "</h4>")
+.bindPopup("<h4>" + parks_data[0][name].park_name + " <br>National Park" + "</h4> <hr> Date Established: <br><h5>" + parks_data[0][name].date_established + "</h5>" + "<hr> Area: <br><h5>" + parks_data[0][name].area_miles2 + " mi2</h5>" + "<br>" + "<img src=" + parks_data[0][name].img_url + "alt=\"pics\" width= \" 140\" height= \"auto\">")
         .on('mouseover', function (e) {
             this.openPopup();
         })
