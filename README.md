@@ -70,7 +70,7 @@ Some images for inspiration:
 <br>
 Using Anaconda's Flask module, we created an app.py file which leads users to endpoints of our API and allows the data to be accessed in JSON format from the MongoDB databases and query URLs.
 <br>
-Dependencies imported, data accessed, and homepage routed to the index.html file which will render the main page<br>
+Dependencies imported, data accessed, and homepage routed to the index.html file which will render the main page <br><br>
 <img src="static/images/readme_pics/app_py2.png/" width="400" height="auto">
 <br>
 Multiple endpoints were created, one for each of the datasets used:
