@@ -68,10 +68,10 @@ function createvisitsMap(data) {
             // format visits # to have comma seperation at 1000s
             var visitsFormat = feature.properties.visits.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
             // create popup info & formatting
-            let markerPopup = ("<h1>" + feature.properties.park_name + "</h1>" +
-            "<h3> Region: " + feature.properties.region + "| State: " + feature.properties.state + "</h3>" +
-            "<h4> Founded: " + feature.properties.date_established + "</h4>" +
-            "<h4> Visits in "+feature.properties.start+": "+visitsFormat+"</h4>"+
+            let markerPopup = ("<h2>" + feature.properties.park_name + "</h2>" +
+            "<h5 style='font-weight:bold;'> Region: " + feature.properties.region + "| State: " + feature.properties.state + "</h5>" +
+            "<h5> Founded: " + feature.properties.date_established + "</h5>" +
+            "<h5> Visits in "+feature.properties.start+": "+visitsFormat+"</h5>"+
             "<strong>" + feature.properties.description + "</strong>")
             // create markers & bind popup
             return L.marker(latlng,{
