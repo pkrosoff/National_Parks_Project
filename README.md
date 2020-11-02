@@ -53,7 +53,7 @@ Some images for inspiration:
 <br>
 <h3>Load</h3>
 <br>
-    <li>Run the np_data_ETL.py file in you terminal, which will:</li>
+    <li>Run the <a href ="np_data_ETL.py">np_data_ETL.py</a> file in you terminal, which will:</li>
     <ul>
     <li>Import cleaned data from csv files</li>
     <li>Split area columns, add miles squared by applying math functions to acres column</li>
@@ -89,3 +89,8 @@ Multiple endpoints were created, one for each of the datasets used:
 <p> The third visualization is an interactive video map combo, and dare I say the feature of the project. It boasts a play button that gives way to a map of the US that populates over the years with park markers as they became established over time, as well as circle radius markers that change in magnitude over the course of the video to signify park visitation and popularity over the years. Dive into the code for the map <a href ="static/js/np_timelineMap.js">here</a>.
 <br>
 <p>Our final visualization on the homepage is a nifty tool that helps you plan your park visit when it is convenient for you, adding the ability to see when most poeple are or aren't also visiting. What's your preference? It allows the user to see an average attendence for each park for each month using attendence data for the last four years. It is interactive upon mouse-over with opacity changes and popups with data. You can check out the code <a href ="static/js/np_heatmap.js">here</a>.
+<br><br>
+<h2>HTML/CSS</h2>
+In the templates folder of the repository, you will find the index.html file which connects knits the javascript files together from the static/js folder into a cohesive arrangement. Each javascript file has a unique script, and wach visualization has a unique ID which is referenced by the index.html code and connect all the files. The css is accessed from its place in the static folder by the index.html, and adds style to the borders and text on the homepage. The index.html page also uses jinja to create a loop to populate some images relating to the naitonal parks to spice up the hoempage and draw the users interest.
+Any programs and packages that were referenced and used in the visualization have to be referenced in the index.html for the visualizations to work.
+<img src="static/images/readme_pics/html.png/" width="200" height="auto">
