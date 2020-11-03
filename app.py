@@ -7,6 +7,7 @@ app=Flask(__name__)
 app.config["MONGO_URI"]="mongodb://localhost:27017/national_parks_db"
 mongo=PyMongo(app)
 np_data = mongo.db.park_info
+np_data_month1 = mongo.db.park_months1
 np_data_month = mongo.db.park_months
 queryURL = "https://gist.githubusercontent.com/erincaughey/2f221501645757e28b715c4063e87595/raw/a90be1b434b1a8cdf71c2abc3373ca63987e2d23/nps-geo-boundary.json"
 
@@ -49,7 +50,12 @@ def servemainData():
     return jsonify(list(np_data.find({ },
    { '_id': 0})))
 
-@app.route("/parks_month")
+@app.route("/park_months1")
+def servemonthData1():
+    return jsonify(list(np_data_month1.find({ },
+   { '_id': 0})))
+
+@app.route("/park_months")
 def servemonthData():
     return jsonify(list(np_data_month.find({ },
    { '_id': 0})))
