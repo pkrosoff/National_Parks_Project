@@ -57,7 +57,7 @@ for i in parks_data["park_name"]:
 
 
 # MONTHLY DATA -----------------------------------------------------
-parks_month_data = pd.read_csv("data/np_data_month1.csv")
+parks_month_data = pd.read_csv("data/np_data_month.csv")
 # create list of parks and months
 parks = []
 for i in parks_month_data["Park_Name"]:
