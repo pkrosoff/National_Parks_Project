@@ -94,6 +94,7 @@ Structured identically to /parks_data at the parent level, but the dictionary fo
 <h5>Route: /park_boundaries</h5>
 Contains GeoJSON data for the boundaries of all geographic entities under the care of the National Parks Service. The entries are assigned UNIT_TYPE which denotes what type of area they are; National Park, Monument, Historic Site, Recreation Area, etc. They can be parsed on those types to show only certain types of areas, as we done with National Parks for our home page visualization featuring the park boundaries.
 <br>
+<br>
 <h2>JavaScript</h2>
 <br>
 <p>Each team member tackled a visualization which tells a story about the National Parks. Using JavaScript, data was accessed from our API and transformed into interactive graphs, charts, and maps.
