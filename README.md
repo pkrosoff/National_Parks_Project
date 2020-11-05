@@ -119,6 +119,7 @@ Any programs and packages that were referenced and used in the visualization hav
 <h3>Want to make this site work for you??</h3>
 <ol>
 <li>Run the requirements.txt file in an environment in your terminal to download the necessary packages</li>
+    <li>Start MongoDB; it must be running for the ETL and Flask App to access the data</li>
 <li>Run the np_data_ETL.py file in your terminal</li>
     <li>Get an API Key from <a href="https://mapbox.com">Mapbox</a> and create a config.js file in the static/js folder, with var API_KEY = "key here";</li>
 <li>Run the app.py file in your terminal</li>
