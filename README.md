@@ -92,7 +92,7 @@ Structured identically to /parks_data at the parent level, but the dictionary fo
 <br>
 <h4>GeoJSON Park Perimeter Coordinate Data</h4>
 <h5>Route: /park_boundaries</h5>
-Contains GeoJSON data for the boundaries of all geographic entities under the care of the National Parks Service. The entries are assigned UNIT_TYPE which denotes what type of area they are; National Park, Monument, Historic Site, Recreation Area, etc. They can be parsed on those types to show only certain types of areas, as we done with National Parks for our home page visualization featuring the park boundaries.
+Contains GeoJSON data for the boundaries of all of the areas under the care of the National Parks Service. The entries are assigned UNIT_TYPE which denotes what type of area they are; National Park, Monument, Historic Site, Recreation Area, etc. They can be parsed on those types to show only certain types of areas, as was done with National Parks for our home page visualization featuring the park boundaries. The data can then be applied as a standard GeoJSON layer onto a Leaflet map, or similar visualization.
 <br>
 <br>
 <h2>JavaScript</h2>
