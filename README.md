@@ -68,7 +68,7 @@ Some images for inspiration:
 <br><br>
 <h2>Create a Flask powered API</h2>
 <br>
-Using Anaconda's Flask module, we created an app.py file which leads users to endpoints of our API and allows the data to be accessed in JSON format from the MongoDB databases and query URLs.
+Using Flask, we created an application (app.py) which leads users to our main page displaying our visualizations. It also allows user access to endpoints of our API to pull data in JSON format from the MongoDB collections and query URLs.
 <br>
 Dependencies imported, data accessed, and homepage routed to the index.html file which will render the main page <br><br>
 <img src="static/images/readme_pics/app_py2.png/" width="400" height="auto">
@@ -77,9 +77,22 @@ Multiple endpoints were created, one for each of the datasets used:
 <ul>
 <li>General Park Info and Yearly Attendence Data (MongoDB)</li>
 <li>Averaged Monthly Park Attendence Data (MongoDB)</li>
-<li>GeoJson Park Perimeter Coordinate Data (URL Query)</li>
+<li>GeoJSON Park Perimeter Coordinate Data (URL Query)</li>
 </ul>
 <img src="static/images/readme_pics/app_py.png/" width="400" height="auto">
+<br>
+<h3>Navigating the API endpoints</h3>
+<h4>General Park Info and Yearly Attendance Data</h4>
+<h5>Route: /parks_data</h5>
+Contains a dictionary of dictionaries and requires an initial indexing of [0] to reach the level where the other dictionaries are stored. There is a dictionary named for each park which contains various information on the park, including Lat/Lon coordinates, and visitation numbers from 1903 to 2019. Example indexing for Latitude: data[0]["Mount Rainier"]["lat"]. Example indexing for 1990 visits: data[0]["Mount Rainier"]["visits"][1990]. The parent dictionary also contains two additional dictionaries to use for looping; one with all of the park names, another with all of the years of visitation numbers. Accessed via data[0]["parks"] or data[0]["years"]
+<br>
+<h4>Averaged Monthly Park Attendance Data</h4>
+<h5>Route: /park_months</h5>
+Structured identically to /parks_data at the parent level, but the dictionary for each park only contains monthly averages, park name, and region.
+<br>
+<h4>GeoJSON Park Perimeter Coordinate Data</h4>
+<h5>Route: /park_boundaries</h5>
+Contains GeoJSON data for the boundaries of all geographic entities under the care of the National Parks Service. The entries are assigned UNIT_TYPE which denotes what type of area they are; National Park, Monument, Historic Site, Recreation Area, etc. They can be parsed on those types to show only certain types of areas, as we done with National Parks for our home page visualization featuring the park boundaries.
 <br>
 <h2>JavaScript</h2>
 <br>
