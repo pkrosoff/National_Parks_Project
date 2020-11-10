@@ -1,10 +1,11 @@
+import os
 from flask import Flask, render_template, redirect, url_for, jsonify, json
 from flask_pymongo import PyMongo
 # from flask_bootstrap import Bootstrap
 import requests
 
 app=Flask(__name__)
-app.config["MONGO_URI"]="mongodb://localhost:27017/national_parks_db"
+app.config["MONGO_URI"] = os.environ['MONGO_URI']
 mongo=PyMongo(app)
 np_data = mongo.db.park_info
 np_data_month1 = mongo.db.park_months1
@@ -17,6 +18,7 @@ def index():
     return render_template(
         "index.html",
         data = data,
+        mapbox=os.environ['MAPBOX']
     )
 
 @app.route("/fred")
