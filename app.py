@@ -18,7 +18,7 @@ def index():
     return render_template(
         "index.html",
         data = data,
-        mapbox=os.environ['MAPBOX']
+        MAPBOX=os.environ['MAPBOX']
     )
 
 @app.route("/fred")

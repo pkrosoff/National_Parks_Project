@@ -1,6 +1,7 @@
 # import dependencies
 import pandas as pd
 import pymongo
+import config
 # YEARLY DATA -----------------------------------------------------
 # read data and rename column to be deleted later
 parks_data = pd.read_csv("data/np_data.csv")
@@ -104,10 +105,10 @@ for i in parks_month_data["Park_Name"]:
 
 #np_data is now a dict of dicts holding all of the information
 #PUSH np_data dict of dicts to MongoDB
-conn = 'mongodb://localhost:27017'
+conn = f"mongodb+srv://parksprojectadmin:{config.password}@nationalparkscluster.suhnc.mongodb.net/nationalparkscluster?retryWrites=true&w=majority"
 client = pymongo.MongoClient(conn)
 # define the database
-db = client.national_parks_db
+db = client.nationalparkscluster
 # define collections
 # annual data & stats
 park_info = db.park_info
