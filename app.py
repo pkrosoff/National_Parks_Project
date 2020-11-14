@@ -2,9 +2,11 @@ from flask import Flask, render_template, redirect, url_for, jsonify, json
 from flask_pymongo import PyMongo
 # from flask_bootstrap import Bootstrap
 import requests
+import config
 
 app=Flask(__name__)
-app.config["MONGO_URI"]="mongodb://localhost:27017/national_parks_db"
+app.config["MONGO_URI"]=f"mongodb+srv://parksprojectadmin:{config.password}@nationalparkscluster.suhnc.mongodb.net/nationalparkscluster?retryWrites=true&w=majority"
+# app.config["MONGO_URI"]="mongodb://localhost:27017/national_parks_db"
 mongo=PyMongo(app)
 np_data = mongo.db.park_info
 np_data_month1 = mongo.db.park_months1
