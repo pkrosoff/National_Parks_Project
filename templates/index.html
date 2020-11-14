@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width" />
     <title>National Parks</title>
     <!-- API Key -->
-    <!-- <script type="text/javascript" src="../static/js/config.js"></script> -->
+    <script> 
+      const API_KEY = "{{MAPBOX}}"
+    </script>
     <!-- Style Sheets -->
     <link rel="stylesheet" href="../static/css/style.css">
-    <!-- <link
+    <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-    /> -->
-    <!-- <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script> -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
 
 
@@ -38,10 +40,10 @@
     <!--==============-->
     <div class="row" id="posterrow">
     <!-- VISUALIZATION-->
-    <!-- {% for i in data.parks %} -->
+    {% for i in data.parks %}
     <!-- Removing parks without posters -->
     <!-- Not the most elegant solution, but it works -->
-    <!-- {% if i != "Congaree" and
+    {% if i != "Congaree" and
      i != "Gates of the Arctic" and
      i != "Hot Springs" and
      i != "Isle Royale" and
@@ -59,7 +61,7 @@
       </div>
       {% endif %}
       {% endfor %}
-      </div> -->
+      </div>
     <!--==============-->
 
 
@@ -103,8 +105,8 @@
     </div>
     <!--==============-->
     <!-- VISUALIZATION-->
-    <!-- <select id="selDataset" onchange="optionChanged(this.value)"></select>
-    <div id= "line" ></div> -->
+    <select id="selDataset" onchange="optionChanged(this.value)"></select>
+    <div id= "line" ></div>
     <!--==============-->
 
     <hr id="breaker">
@@ -167,7 +169,7 @@
 
 
     <!-- Web Dependencies -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -175,16 +177,13 @@
     <script src="https://code.highcharts.com/modules/heatmap.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <!-- Local JS -->
-    <!-- <script src="./static/js/np_parkboundariesMap.js"></script>
+    <script src="./static/js/np_parkboundariesMap.js"></script>
     <script src="./static/js/np_lineGraph.js"></script>
     <script src="../static/js/np_timelineMap.js"></script>
-    <script src="./static/js/leaflet.timeline.js"></script> -->
-    <!-- <script> 
-      const API_KEY = "{{MAPBOX}}"
-    </script> -->
-    <!-- <script src="./static/js/np_heatMap.js"></script> -->
+    <script src="./static/js/leaflet.timeline.js"></script>
+    <script src="./static/js/np_heatMap.js"></script>
 
   </body>
 </html>
