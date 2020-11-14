@@ -8,7 +8,7 @@ import requests
 app=Flask(__name__)
 CORS(app)
 app.config["DEBUG"]=True
-app.config["MONGO_URI"] = os.environ['MONGO_URI']
+app.config["MONGO_URI"] = os.environ.get['MONGO_URI']
 mongo=PyMongo(app)
 np_data = mongo.db.park_info
 np_data_month = mongo.db.park_months
@@ -18,7 +18,7 @@ queryURL = "https://gist.githubusercontent.com/erincaughey/2f221501645757e28b715
 def index():
     return render_template(
         "index.html",
-        MAPBOX=os.environ['MAPBOX'],
+        MAPBOX= os.environ.get['MAPBOX'],
     )
 
 @app.route("/parks_data", methods=['GET'])
