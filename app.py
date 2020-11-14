@@ -19,8 +19,10 @@ def index():
     return render_template(
         "index.html",
         mapbox= os.environ['MAPBOX'],
-        data = list(np_data.find({ },
-   { '_id': 0})))
+        data = mongo.db.park_info.find_one(),
+#         data = list(np_data.find({ },
+#    { '_id': 0})))
+    )
 
 @app.route("/parks_data", methods=['GET'])
 def servemainData():
