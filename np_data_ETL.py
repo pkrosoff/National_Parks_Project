@@ -106,7 +106,6 @@ for i in parks_month_data["Park_Name"]:
 #np_data is now a dict of dicts holding all of the information
 #PUSH np_data dict of dicts to MongoDB
 conn = f"mongodb+srv://parksprojectadmin:{config.password}@nationalparkscluster.suhnc.mongodb.net/nationalparkscluster?retryWrites=true&w=majority"
-print(conn)
 client = pymongo.MongoClient(conn)
 # define the database
 db = client.nationalparkscluster
