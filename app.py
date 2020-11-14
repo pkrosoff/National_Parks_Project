@@ -16,37 +16,9 @@ queryURL = "https://gist.githubusercontent.com/erincaughey/2f221501645757e28b715
 
 @app.route("/")
 def index():
-    data = mongo.db.park_info.find_one()
     return render_template(
         "index.html",
-        data = data,
         MAPBOX=os.environ['MAPBOX']
-    )
-
-@app.route("/fred")
-def fred_dev():
-    return render_template(
-        "fred.html",
-    )
-
-@app.route("/jessie")
-def jessie_dev():
-    return render_template(
-        "jessie.html",
-    )
-
-@app.route("/johnny")
-def johnny_dev():
-    data = mongo.db.park_info.find_one()
-    return render_template(
-        "johnny.html",
-        data=data,
-    )
-
-@app.route("/phoebe")
-def phoebe_dev():
-    return render_template(
-        "phoebe.html",
     )
 
 @app.route("/parks_data")
