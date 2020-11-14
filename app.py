@@ -21,17 +21,17 @@ def index():
         MAPBOX=os.environ['MAPBOX'],
     )
 
-@app.route("/parks_data")
+@app.route("/parks_data", methods=['GET'])
 def servemainData():
     return jsonify(list(np_data.find({ },
    { '_id': 0})))
 
-@app.route("/park_months")
+@app.route("/park_months", methods=['GET'])
 def servemonthData():
     return jsonify(list(np_data_month.find({ },
    { '_id': 0})))
 
-@app.route("/park_boundaries")
+@app.route("/park_boundaries", methods=['GET'])
 def serveBoundaries():
     try:
         Uresponse = requests.get(queryURL)
