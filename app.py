@@ -19,6 +19,7 @@ def index():
     return render_template(
         "index.html",
         mapbox= os.environ['MAPBOX'],
+        data = np_data,
     )
 
 @app.route("/parks_data", methods=['GET'])
@@ -31,15 +32,15 @@ def servemonthData():
     return jsonify(list(np_data_month.find({ },
    { '_id': 0})))
 
-# @app.route("/park_boundaries", methods=['GET'])
-# def serveBoundaries():
-#     try:
-#         Uresponse = requests.get(queryURL)
-#     except requests.ConnectionError:
-#        return "Connection Error"  
-#     Jresponse = Uresponse.text
-#     data = json.loads(Jresponse)
-#     return Jresponse
+@app.route("/park_boundaries", methods=['GET'])
+def serveBoundaries():
+    try:
+        Uresponse = requests.get(queryURL)
+    except requests.ConnectionError:
+       return "Connection Error"  
+    Jresponse = Uresponse.text
+    data = json.loads(Jresponse)
+    return Jresponse
 
 if __name__=="__main__":
     app.run(debug=True)
