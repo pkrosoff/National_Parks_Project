@@ -18,7 +18,7 @@ app.config["DEBUG"]=True
 def index():
     return render_template(
         "index.html",
-        MAPBOX=os.environ['MAPBOX']
+        # MAPBOX=os.environ['MAPBOX']
     )
 
 # @app.route("/parks_data")
