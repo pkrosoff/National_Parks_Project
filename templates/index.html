@@ -41,7 +41,7 @@
     <!--==============-->
     <div class="row" id="posterrow">
     <!-- VISUALIZATION-->
-    {% for i in data.parks %}
+    {% for i in data[0].parks %}
     <!-- Removing parks without posters -->
     <!-- Not the most elegant solution, but it works -->
     {% if i != "Congaree" and

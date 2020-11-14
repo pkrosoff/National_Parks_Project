@@ -19,8 +19,8 @@ def index():
     return render_template(
         "index.html",
         mapbox= os.environ['MAPBOX'],
-        data = np_data,
-    )
+        data = list(np_data.find({ },
+   { '_id': 0})))
 
 @app.route("/parks_data", methods=['GET'])
 def servemainData():
